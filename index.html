@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8112/90</title>
+    <style>
+        li{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lei 8.112/90</h1>
+    <ul>
+        <li onclick="playAudio('disposicoes')">Disposições Preliminares</li>
+        <audio id="disposicoes" src="audio/disposicoes.mp3"></audio>
+
+        <li onclick="playAudio('concurso')">Concurso Público</li>
+        <audio id="concurso" src="audio/concurso.mp3"></audio>
+        
+        <li onclick="playAudio('nomeacao')">Nomeação</li>
+        <audio id="nomeacao" src="audio/nomeação.mp3"></audio>
+
+        <li onclick="playAudio('posse')">Posse</li>
+        <audio id="posse" src="audio/posse.mp3"></audio>
+
+        <li>Exercício</li>
+
+        <li onclick="playAudio('estagio')">Estágio Probatório</li>
+        <audio id="estagio" src="audio/estagio_probatorio.mp3"></audio>
+
+        <li onclick="playAudio('estabilidade')">Estabilidade</li>
+        <audio id="estabilidade" src="audio/estabilidade.mp3"></audio>
+
+        <li onclick="playAudio('provimentos')">Formas de Provimento</li>
+        <audio id="provimentos" src="audio/provimentos.mp3"></audio>
+
+        <ul>
+            <li onclick="playAudio('nomeacao')">Nomeação</li>
+            <audio id="nomeacao" src="audio/nomeação.mp3"></audio>
+
+            <li>Promoção</li>
+
+            <li onclick="playAudio('readaptacao')">Readaptação</li>
+            <audio id="readaptacao" src="audio/readaptacao.mp3"></audio>
+
+            <li onclick="playAudio('reversao')">Reversão</li>
+            <audio id="reversao" src="audio/reversao.mp3"></audio>
+
+            <li onclick="playAudio('aproveitamento')">Aproveitamento</li>
+            <audio id="aproveitamento" src="audio/aproveitamento.mp3"></audio>
+
+            <li onclick="playAudio('reintegracao')">Reintegração</li>
+            <audio id="reintegracao" src="audio/reintegracao.mp3"></audio>
+
+            <li onclick="playAudio('reconducao')">Recondução</li>
+            <audio id="reconducao" src="audio/reconducao.mp3"></audio>
+
+        </ul>
+        <li onclick="playAudio('vacancia')">Vacância</li>
+        <audio id="vacancia" src="audio/vacancia.mp3"></audio>
+
+        <ul><li>Exoneração</li></ul>
+
+    </ul>
+    <script>
+        let currentAudio = null;
+
+        function playAudio(audioId) {
+            if (currentAudio){
+                currentAudio.pause();
+                currentAudio.currentTime = 0; //Reinicia o áudio anterior
+            }
+
+            const newAudio = document.getElementById(audioId);
+            if (newAudio){
+                newAudio.play();
+                currentAudio = newAudio;
+            }
+        }
+
+
+    </script>
+</body>
+</html>
