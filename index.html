@@ -3,69 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imgs/icons8-law-50.png">
     <title>8112/90</title>
     <style>
         li{
-            cursor: pointer;
+            margin: 5px 0;
+            padding: 2px;
+        }
+        li.audio-item{
+            cursor: pointer; /*Apenas itens com a classe audio-item terão cursor pointer*/
+        }
+        li.audio-item:hover{
+            background-color:cadetblue; /*Destaca o item ao passar o mouse*/
         }
     </style>
 </head>
 <body>
     <h1>Lei 8.112/90</h1>
     <ul>
-        <li onclick="toggleAudio('disposicoes')">Disposições Preliminares</li>
+        <li class="audio-item" onclick="toggleAudio('disposicoes')">Disposições Preliminares</li>
         <audio id="disposicoes" src="audio/disposicoes.mp3"></audio>
 
-        <li onclick="toggleAudio('concurso')">Concurso Público</li>
+        <li class="audio-item" onclick="toggleAudio('concurso')">Concurso Público</li>
         <audio id="concurso" src="audio/concurso.mp3"></audio>
         
-        <li onclick="toggleAudio('nomeacao')">Nomeação</li>
+        <li class="audio-item" onclick="toggleAudio('nomeacao')">Nomeação</li>
         <audio id="nomeacao" src="audio/nomeação.mp3"></audio>
 
-        <li onclick="toggleAudio('posse')">Posse</li>
+        <li class="audio-item" onclick="toggleAudio('posse')">Posse</li>
         <audio id="posse" src="audio/posse.mp3"></audio>
-
-        <li onclick="toggleAudio('estagio')">Estágio Probatório</li>
-        <audio id="estagio" src="audio/estagio_probatorio.mp3"></audio>
 
         <li>Exercício</li>
 
-        <li onclick="toggleAudio('estabilidade')">Estabilidade</li>
+        <li class="audio-item" onclick="toggleAudio('estagio')">Estágio Probatório</li>
+        <audio id="estagio" src="audio/estagio_probatorio.mp3"></audio>
+
+        <li class="audio-item" onclick="toggleAudio('estabilidade')">Estabilidade</li>
         <audio id="estabilidade" src="audio/estabilidade.mp3"></audio>
 
-        <li onclick="toggleAudio('provimentos')">Formas de Provimento</li>
+        <li class="audio-item" onclick="toggleAudio('provimentos')">Formas de Provimento</li>
         <audio id="provimentos" src="audio/provimentos.mp3"></audio>
 
         <ul>
-            <li onclick="toggleAudio('nomeacao')">Nomeação</li>
+            <li class="audio-item" onclick="toggleAudio('nomeacao')">Nomeação</li>
             <audio id="nomeacao" src="audio/nomeação.mp3"></audio>
 
             <li>Promoção</li>
 
-            <li onclick="toggleAudio('readaptacao')">Readaptação</li>
+            <li class="audio-item" onclick="toggleAudio('readaptacao')">Readaptação</li>
             <audio id="readaptacao" src="audio/readaptacao.mp3"></audio>
 
-            <li onclick="toggleAudio('reversao')">Reversão</li>
+            <li class="audio-item" onclick="toggleAudio('reversao')">Reversão</li>
             <audio id="reversao" src="audio/reversao.mp3"></audio>
 
-            <li onclick="toggleAudio('aproveitamento')">Aproveitamento</li>
+            <li class="audio-item" onclick="toggleAudio('aproveitamento')">Aproveitamento</li>
             <audio id="aproveitamento" src="audio/aproveitamento.mp3"></audio>
 
-            <li onclick="toggleAudio('reintegracao')">Reintegração</li>
+            <li class="audio-item" onclick="toggleAudio('reintegracao')">Reintegração</li>
             <audio id="reintegracao" src="audio/reintegracao.mp3"></audio>
 
-            <li onclick="toggleAudio('reconducao')">Recondução</li>
+            <li class="audio-item" onclick="toggleAudio('reconducao')">Recondução</li>
             <audio id="reconducao" src="audio/reconducao.mp3"></audio>
 
         </ul>
-        <li onclick="toggleAudio('vacancia')">Vacância</li>
+        <li class="audio-item" onclick="toggleAudio('vacancia')">Vacância</li>
         <audio id="vacancia" src="audio/vacancia.mp3"></audio>
 
         <ul><li>Exoneração</li></ul>
 
+        <li>Remoção</li>
+        <li>Redistribuição</li>
+        <li>Substituição</li>
+        <li>Vencimento e Remuneração</li>
+        <li>Servidor em Débito com o Erário</li>
+        <li>Teto Remuneratório da Administração Pública Federal</li>
+        <li>Vantagens</li>
+        <li>Indenizações</li>
+        <ul>
+            <li>Ajuda de Custo</li>
+            <li>Diárias</li>
+            <li>De Transporte</li>
+            <li>Auxílio Moradia</li>
+        </ul>
+        <li>Gratificações e Adicionais</li>
+        <ul>
+            <li>Retribuição pelo Exercício de Função de Direção, Chefia e Assessoramento</li>
+            <li>Natalina</li>
+            <li>Adicionais</li>
+            <ul>
+                <li>Insalubridade</li>
+                <li>Periculosidade</li>
+                <li>Penosidade</li>
+            </ul>
+            <li>Noturno</li>
+            <li>Serviço Extraordinário</li>
+            <li>Férias</li>
+            <li>Encargo de Curso ou Concurso</li>
+        </ul>
+        <li>Férias</li>
+        <li>Licenças</li>
+        <ul>
+            <li><strong>D</strong>oença em pessoa na família</li>
+            <li><strong>A</strong>fastamento de cônjuge</li>
+            <li><strong>S</strong>erviço militar</li>
+            <li><strong>A</strong>tividade política</li>
+            <li><strong>C</strong>apacitação</li>
+            <li><strong>I</strong>nteresse particular</li>
+            <li><strong>M</strong>andato classista</li>
+        </ul>
+        <li>Afastamentos</li>
+        <ul>
+            <li>Servir outro Órgão ou Entidade</li>
+            <li>Exercício de Mandato Eletivo</li>
+            <li>Estudo ou Missão no Exterior</li>
+            <li>Programa de Pós-Graduação Stricto Sensu no País</li>
+        </ul>
+        <li>Concessões</li>
+        <li>Horário Especial</li>
+
     </ul>
     <script>
         let currentAudio = null;
+
+        //Adiciona automaticamente a classe `audio-item` apenas para itens que têm áudio
+        document.querySelectorAll('li').forEach(li =>{
+            const audioId = li.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+            const audioElement = document.getElementById(audioId);
+            if(audioElement){
+                li.classList.add('audio-item');
+                li.setAttribute('onclick',`toggleAudio('${audioId}')`);
+            }
+        })
 
         function toggleAudio(audioId) {
             const newAudio = document.getElementById(audioId);
