@@ -13,52 +13,52 @@
 <body>
     <h1>Lei 8.112/90</h1>
     <ul>
-        <li onclick="playAudio('disposicoes')">Disposições Preliminares</li>
+        <li onclick="toggleAudio('disposicoes')">Disposições Preliminares</li>
         <audio id="disposicoes" src="audio/disposicoes.mp3"></audio>
 
-        <li onclick="playAudio('concurso')">Concurso Público</li>
+        <li onclick="toggleAudio('concurso')">Concurso Público</li>
         <audio id="concurso" src="audio/concurso.mp3"></audio>
         
-        <li onclick="playAudio('nomeacao')">Nomeação</li>
+        <li onclick="toggleAudio('nomeacao')">Nomeação</li>
         <audio id="nomeacao" src="audio/nomeação.mp3"></audio>
 
-        <li onclick="playAudio('posse')">Posse</li>
+        <li onclick="toggleAudio('posse')">Posse</li>
         <audio id="posse" src="audio/posse.mp3"></audio>
+
+        <li onclick="toggleAudio('estagio')">Estágio Probatório</li>
+        <audio id="estagio" src="audio/estagio_probatorio.mp3"></audio>
 
         <li>Exercício</li>
 
-        <li onclick="playAudio('estagio')">Estágio Probatório</li>
-        <audio id="estagio" src="audio/estagio_probatorio.mp3"></audio>
-
-        <li onclick="playAudio('estabilidade')">Estabilidade</li>
+        <li onclick="toggleAudio('estabilidade')">Estabilidade</li>
         <audio id="estabilidade" src="audio/estabilidade.mp3"></audio>
 
-        <li onclick="playAudio('provimentos')">Formas de Provimento</li>
+        <li onclick="toggleAudio('provimentos')">Formas de Provimento</li>
         <audio id="provimentos" src="audio/provimentos.mp3"></audio>
 
         <ul>
-            <li onclick="playAudio('nomeacao')">Nomeação</li>
+            <li onclick="toggleAudio('nomeacao')">Nomeação</li>
             <audio id="nomeacao" src="audio/nomeação.mp3"></audio>
 
             <li>Promoção</li>
 
-            <li onclick="playAudio('readaptacao')">Readaptação</li>
+            <li onclick="toggleAudio('readaptacao')">Readaptação</li>
             <audio id="readaptacao" src="audio/readaptacao.mp3"></audio>
 
-            <li onclick="playAudio('reversao')">Reversão</li>
+            <li onclick="toggleAudio('reversao')">Reversão</li>
             <audio id="reversao" src="audio/reversao.mp3"></audio>
 
-            <li onclick="playAudio('aproveitamento')">Aproveitamento</li>
+            <li onclick="toggleAudio('aproveitamento')">Aproveitamento</li>
             <audio id="aproveitamento" src="audio/aproveitamento.mp3"></audio>
 
-            <li onclick="playAudio('reintegracao')">Reintegração</li>
+            <li onclick="toggleAudio('reintegracao')">Reintegração</li>
             <audio id="reintegracao" src="audio/reintegracao.mp3"></audio>
 
-            <li onclick="playAudio('reconducao')">Recondução</li>
+            <li onclick="toggleAudio('reconducao')">Recondução</li>
             <audio id="reconducao" src="audio/reconducao.mp3"></audio>
 
         </ul>
-        <li onclick="playAudio('vacancia')">Vacância</li>
+        <li onclick="toggleAudio('vacancia')">Vacância</li>
         <audio id="vacancia" src="audio/vacancia.mp3"></audio>
 
         <ul><li>Exoneração</li></ul>
@@ -67,16 +67,26 @@
     <script>
         let currentAudio = null;
 
-        function playAudio(audioId) {
-            if (currentAudio){
+        function toggleAudio(audioId) {
+            const newAudio = document.getElementById(audioId);
+
+            //Pausa o áudio atual se ele não for o mesmo que foi clicado
+            if (currentAudio && currentAudio !== newAudio){
                 currentAudio.pause();
                 currentAudio.currentTime = 0; //Reinicia o áudio anterior
+                currentAudio.controls = false; //Remove os controles do áudio anterior
             }
 
-            const newAudio = document.getElementById(audioId);
-            if (newAudio){
-                newAudio.play();
-                currentAudio = newAudio;
+            if(newAudio){
+                newAudio.controls = true; //Exibe os controles do áudio
+                if(newAudio.paused){
+                    newAudio.play();
+                } else {
+                    newAudio.pause();
+                    currentAudio = null;
+                    newAudio.controls = false; //Remove controles se o áudio for pausado
+                }
+                currentAudio = newAudio; //Atualiza o áudio atual
             }
         }
 
