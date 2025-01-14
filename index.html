@@ -138,25 +138,53 @@
         function toggleAudio(audioId) {
             const newAudio = document.getElementById(audioId);
 
-            //Pausa o áudio atual se ele não for o mesmo que foi clicado
-            if (currentAudio && currentAudio !== newAudio){
-                currentAudio.pause();
-                currentAudio.currentTime = 0; //Reinicia o áudio anterior
-                currentAudio.controls = false; //Remove os controles do áudio anterior
+            //Remove o evento `ended` do áudio anterior, se houver
+            if(currentAudio && currentAudio !== newAudio){
+                currentAudio.removeEventListener('ended',handleAudioEnded);
+                stopAudio(currentAudio);
             }
 
             if(newAudio){
                 newAudio.controls = true; //Exibe os controles do áudio
                 if(newAudio.paused){
                     newAudio.play();
+                    //Adiciona o evento `ended` ao novo áudio
+                    newAudio.addEventListener('ended',handleAudioEnded);
                 } else {
                     newAudio.pause();
-                    currentAudio = null;
-                    newAudio.controls = false; //Remove controles se o áudio for pausado
+                    stopAudio(newAudio);
                 }
                 currentAudio = newAudio; //Atualiza o áudio atual
             }
         }
+
+        //Função de pausar áudio
+        function stopAudio(audio) {
+            audio.pause();
+            audio.currentTime = 0; //Reinicia o áudio anterior
+            audio.controls = false; //Remove os controles
+        }
+
+        //Função do evento `ended`
+        function handleAudioEnded(){
+            playNextAudio(currentAudio);
+        }
+
+        //Função de reproduzir o próximo áudio
+        function playNextAudio(currentAudio){
+            const items = Array.from(document.querySelectorAll('li.audio-item'));
+            const currentIndex = items.findIndex(item =>
+                item.getAttribute('onclick').includes(currentAudio.id)
+            );
+
+            if (currentIndex !== -1 && currentIndex + 1 < items.length){
+                const nextItem = items[currentIndex + 1];
+                const nextAudioId = nextItem.getAttribute('onclick').match(/'(.*?)'/)[1];
+                toggleAudio(nextAudioId);
+            }
+        }
+
+
 
 
     </script>
